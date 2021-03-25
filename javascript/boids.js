@@ -1,5 +1,7 @@
 const app = new PIXI.Application({ backgroundColor: 0x1099bb });
-document.body.appendChild(app.view);
+
+//append boids.js to any element named "boids" on the page
+document.getElementsByName("boids")[0].appendChild(app.view);
 
 numBoids = 25;
 sensDist = 50;
@@ -35,7 +37,13 @@ for (var i = 0; i < numBoids; i++) {
 
 }
 
+//draw a box around the app to hide the popping a little bitmap
+var border = new PIXI.Graphics();
+lw = 8;
+border.lineStyle(lw, 0x000000, 1); // width, color, alpha
+border.drawRect(lw/2, lw/2, app.screen.width-lw/2, app.screen.height-lw/2);
 
+app.stage.addChild(border);
 
 // Listen for animate update
 app.ticker.add((delta) => {
@@ -55,7 +63,7 @@ app.ticker.add((delta) => {
         newRots[i] /= counter;
     }
 
-    
+
     // delta is 1 if running at 100% performance
     for (var i = 0; i < boids.length; i++) {
         sensing[i].position = {x: boids[i].x, y: boids[i].y};
@@ -83,4 +91,3 @@ app.ticker.add((delta) => {
     }
 
 });
-
