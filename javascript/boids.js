@@ -41,7 +41,7 @@ for (var i = 0; i < numBoids; i++) {
 var border = new PIXI.Graphics();
 lw = 8;
 border.lineStyle(lw, 0x000000, 1); // width, color, alpha
-border.drawRect(lw/2, lw/2, app.screen.width-lw/2, app.screen.height-lw/2);
+border.drawRect(lw/2, lw/2, app.screen.width-lw, app.screen.height-lw);
 
 app.stage.addChild(border);
 
