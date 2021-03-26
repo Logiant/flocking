@@ -1,10 +1,39 @@
-const app = new PIXI.Application({ backgroundColor: 0x1099bb });
+const app = new PIXI.Application({
+  backgroundColor: 0x1099bb,
+  width: 600,
+  height: 400
+});
 
 //append boids.js to any element named "boids" on the page
 document.getElementsByName("boids")[0].appendChild(app.view);
 
+//variables that define the system
 numBoids = 25;
 sensDist = 50;
+//control gains
+var kp = 0.1; //control gain on total u(t)
+var kn = 0.5; //neighbor influence
+var kv = 0.5; //potential field influence
+
+//sliders and other control bits
+ var horizonSlider = document.getElementById("horizon");
+ var knkvSlider = document.getElementById("knkv");
+
+
+horizonSlider.oninput = function() {
+  sensDist = this.value;
+  for (var i = 0; i < numBoids; i++) {
+    sensing[i].clear();
+    sensing[i].lineStyle(2, 0xffffff);
+    sensing[i].arc(0, 0, sensDist, 0, 2*Math.PI);// cx, cy, radius, startAngle, endAngle
+  }
+}
+
+knkvSlider.oninput = function() {
+  kn = this.value / 100.0;
+  kv = 1 - kn;
+}
+
 
 var boids = [];
 var vel = [];
@@ -27,7 +56,7 @@ for (var i = 0; i < numBoids; i++) {
 
     boids[i] = PIXI.Sprite.from('images/boid.png');
     // set anchor point
-    boids[i].anchor.set(0.5, 0.66);
+    boids[i].anchor.set(0.33, 0.5);
     // move the sprite to the center of the screen and give it a random orientation
     boids[i].x = Math.random()*app.screen.width;
     boids[i].y = Math.random()*app.screen.height;
@@ -72,10 +101,6 @@ function potential(r) {
 }
 
 
-//control gains
-var kp = 0.5; //control gain on total u(t)
-var kn = 0.1; //neighbor influence
-var kv = 0.1; //potential field influence
 
 
 // Listen for animate update
@@ -100,12 +125,9 @@ app.ticker.add((delta) => {
               angle = Math.atan2(dy, dx);
               u[i][0] += pF * Math.cos(angle);
               u[i][1] += pF * Math.sin(angle);
-
             }
         }
     }
-
-
 
     // delta is 1 if running at 100% performance
     for (var i = 0; i < boids.length; i++) {

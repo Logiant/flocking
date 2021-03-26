@@ -8,13 +8,21 @@
 
 <body>
 
-    <h1>Flocking</h1>
-    <p>A git pages website to demonstrate some cool interactive flocking experiments!</p>
-
-    <p> Coming Soon(ish)! </p>
+    <h1>Reynolds Flocking</h1>
+    <h2>(Boids)</h2>
 
 
     <app name="boids"> </app>
+    <!-- slider for boids -->
+    <div class="slidecontainer">
+      Sensing horizon:
+      <input type="range" min="25" max="150" value="50" class="slider" id="horizon">
+    </div>
+
+    <div class="slidecontainer">
+      Potential Field vs Velocity Matching influence:
+      <input type="range" min="0" max="100" value="50" class="slider" id="knkv">
+    </div>
 
 
 </body>
