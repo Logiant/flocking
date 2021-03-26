@@ -7,6 +7,9 @@ numBoids = 25;
 sensDist = 50;
 
 var boids = [];
+var vel = [];
+var vmax = 1;
+
 var sensing = [];
 
 
@@ -28,7 +31,12 @@ for (var i = 0; i < numBoids; i++) {
     // move the sprite to the center of the screen and give it a random orientation
     boids[i].x = Math.random()*app.screen.width;
     boids[i].y = Math.random()*app.screen.height;
-    boids[i].rotation = Math.random() * 2 * Math.PI
+
+    vel[i] = [(Math.random() - 0.5)*2*vmax, (Math.random() - 0.5)*2*vmax,]
+
+
+    boids[i].rotation = Math.atan2(vel[i][1], vel[i][0])
+
     //add it to the canvas
     app.stage.addChild(boids[i]);
 
@@ -45,47 +53,92 @@ border.drawRect(lw/2, lw/2, app.screen.width-lw, app.screen.height-lw);
 
 app.stage.addChild(border);
 
+
+/* Define the helper potential function */
+function potential(r) {
+  var rDes = sensDist / 2;
+  var d = r - rDes; //0 means we're at the right spot
+
+  //if we're too close
+  if (d < -0.01) {
+    return -1 * d * d * 0.5;
+  }
+  else if (d > 0.01) { //if we're too far
+    return d * 0.001;
+  }
+  else {
+    return 0;
+  }
+}
+
+
+//control gain
+kp = 0.5;
+
 // Listen for animate update
 app.ticker.add((delta) => {
 
     //calculate a vector of new rotations
-    var newRots = [];
-    for (var i = 0; i < boids.length; i++) {
-        newRots[i] = 0;
-        var counter = 0;
-        for (var j = 0; j < boids.length; j++) {
+    var u = [];
 
-            if ( (boids[i].x-boids[j].x)**2 + (boids[i].y - boids[j].y)**2 <= sensDist * sensDist) {
-                counter++;
-                newRots[i] += boids[j].rotation;
+    for (var i = 0; i < boids.length; i++) {
+        u[i] = [0, 0];
+        for (var j = 0; j < boids.length; j++) {
+            //check if we're in range of the neighborhood
+            dx = boids[i].x-boids[j].x;
+            dy = boids[i].y-boids[j].y;
+            dist = Math.sqrt( dx*dx + dy*dy);
+            if ( dist <= sensDist) {
+              //velocity matching
+              u[i][0] += 0.5*(vel[i][0] - vel[j][0]);
+              u[i][1] += 0.5*(vel[i][1] - vel[j][1]);
+              //potential field cohesion + collision aboidance
+              pF = potential(dist) * 2;
+              angle = Math.atan2(dy, dx);
+              u[i][0] += pF * Math.cos(angle);
+              u[i][1] += pF * Math.sin(angle);
+
             }
         }
-        newRots[i] /= counter;
     }
+
 
 
     // delta is 1 if running at 100% performance
     for (var i = 0; i < boids.length; i++) {
-        sensing[i].position = {x: boids[i].x, y: boids[i].y};
+      //do the control input part to get the new vx, vy
 
-        boids[i].rotation = newRots[i];
+      //vel[i][0] += u[i][0];
+      //vel[i][1] += u[i][1];
 
-        boids[i].x += 1 * delta * Math.cos(boids[i].rotation);
-        boids[i].y += 1 * delta * Math.sin(boids[i].rotation);
+      vel[i][0] -= kp*u[i][0];
+      vel[i][1] -= kp*u[i][1];
 
-        //wrap to the screen bounds
-        if (boids[i].x > app.screen.width) {
-            boids[i].x -= app.screen.width;
-        }
-        if (boids[i].x < 0) {
-            boids[i].x += app.screen.width;
-        }
-        if (boids[i].y > app.screen.height) {
-            boids[i].y -= app.screen.height;
-        }
-        if (boids[i].y < 0) {
-            boids[i].y += app.screen.height;
-        }
+      vel[i][0] = Math.min( Math.max(-vmax, vel[i][0]), vmax);
+      vel[i][1] = Math.min( Math.max(-vmax, vel[i][1]), vmax);
+
+
+      boids[i].rotation = Math.atan2(vel[i][1], vel[i][0])
+
+      boids[i].x += vel[i][0] * delta;
+      boids[i].y += vel[i][1] * delta;
+
+      //wrap to the screen bounds
+      if (boids[i].x > app.screen.width) {
+          boids[i].x -= app.screen.width;
+      }
+      if (boids[i].x < 0) {
+          boids[i].x += app.screen.width;
+      }
+      if (boids[i].y > app.screen.height) {
+          boids[i].y -= app.screen.height;
+      }
+      if (boids[i].y < 0) {
+          boids[i].y += app.screen.height;
+      }
+
+      //put the sensing circle on the boids
+      sensing[i].position = {x: boids[i].x, y: boids[i].y};
 
 
     }
