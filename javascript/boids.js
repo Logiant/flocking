@@ -72,8 +72,11 @@ function potential(r) {
 }
 
 
-//control gain
-kp = 0.5;
+//control gains
+var kp = 0.5; //control gain on total u(t)
+var kn = 0.1; //neighbor influence
+var kv = 0.1; //potential field influence
+
 
 // Listen for animate update
 app.ticker.add((delta) => {
@@ -90,10 +93,10 @@ app.ticker.add((delta) => {
             dist = Math.sqrt( dx*dx + dy*dy);
             if ( dist <= sensDist) {
               //velocity matching
-              u[i][0] += 0.5*(vel[i][0] - vel[j][0]);
-              u[i][1] += 0.5*(vel[i][1] - vel[j][1]);
+              u[i][0] += kn*(vel[i][0] - vel[j][0]);
+              u[i][1] += kn*(vel[i][1] - vel[j][1]);
               //potential field cohesion + collision aboidance
-              pF = potential(dist) * 2;
+              pF = potential(dist) * kv;
               angle = Math.atan2(dy, dx);
               u[i][0] += pF * Math.cos(angle);
               u[i][1] += pF * Math.sin(angle);
@@ -107,9 +110,6 @@ app.ticker.add((delta) => {
     // delta is 1 if running at 100% performance
     for (var i = 0; i < boids.length; i++) {
       //do the control input part to get the new vx, vy
-
-      //vel[i][0] += u[i][0];
-      //vel[i][1] += u[i][1];
 
       vel[i][0] -= kp*u[i][0];
       vel[i][1] -= kp*u[i][1];
