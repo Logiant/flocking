@@ -1,12 +1,12 @@
 /* Add some padding on document's body to prevent the content
    from going underneath the header and footer */
 body{
-  margin: 0px;
-  padding-top: 60px;
+  padding-top: 90px;
   padding-bottom: 40px;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  background-color: LightSteelBlue;
+  background-color: #d2e6f7;
   margin: 0 auto;
+  text-align: left;
 }
 
 /* Header Properties */
@@ -15,7 +15,7 @@ body{
   width: 100%;
   position: fixed;
   z-index: 1000;
-  background: #333;
+  background-color: green;
   height: 60px;
   line-height: 60px;
   text-align: center;
@@ -24,16 +24,38 @@ body{
   color: white;
 }
 
-div {
+/*navigation bar*/
+.fixed-header nav {
+  font-size: 0.5em;
+  line-height: 30px;
   text-align: center;
+  background-color: inherit;
+  margin: 0 auto;
 }
+
+.fixed-header nav a {
+  text-decoration: none;
+  color: white;
+  padding: 0 1em;
+  font-variant: small-caps;
+}
+
+.fixed-header nav a:hover {
+  color: cyan;
+}
+
+a {
+  text-decoration: underline;
+  color: black;
+}
+
 
 #content {
   position: relative;
-  width: 85%;
+  width: 600px;
   margin: 0 auto;
-  padding-bottom: 2em;
-  background-color: #ebd5b3;
+  padding: 0em 1em;
+  background-color: #b8cbdb;
   font-family: "Marcellus SC", serif;
   color: black;
   font-family: serif;
@@ -44,20 +66,40 @@ div {
 
 
 #content h1 {
-  font-size: 2em;
-  margin: 0.5em 0.1em;
-}
-
-#content h2 {
   font-size: 1.5em;
-  margin: 0;
+  text-align: center;
+  width: 100%;
+  padding: inherit;
+  margin-left: -0.666666667em;
+  background-color: green;
+  color: white;
 }
 
 
 #content p {
-  margin: 0;
+  margin: 0 0 1em 0;
+  line-height: 1.5;
 }
 
+#content ul {
+  margin: -0.5em 0 0.5em 0;
+}
+
+.info {
+  font-style: italic;
+  font-size: 1.25em;
+  padding: 1em 0;
+  text-align: center;
+}
+
+.slidecontainer {
+  display:flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
 
 
 app {
