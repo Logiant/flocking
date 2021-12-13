@@ -1,25 +1,64 @@
-body {
-  background-color: lightblue;
+/* Add some padding on document's body to prevent the content
+   from going underneath the header and footer */
+body{
+  margin: 0px;
+  padding-top: 60px;
+  padding-bottom: 40px;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  background-color: LightSteelBlue;
+  margin: 0 auto;
 }
 
-h1 {
-  color: white;
+/* Header Properties */
+.fixed-header{
+  top: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  background: #333;
+  height: 60px;
+  line-height: 60px;
   text-align: center;
-}
-
-h2 {
+  font-family: "Marcellus SC", serif;
+  font-size: 2em;
   color: white;
-  text-align: center;
 }
 
 div {
   text-align: center;
 }
 
-p {
-  font-family: verdana;
-  font-size: 20px;
+#content {
+  position: relative;
+  width: 85%;
+  margin: 0 auto;
+  padding-bottom: 2em;
+  background-color: #ebd5b3;
+  font-family: "Marcellus SC", serif;
+  color: black;
+  font-family: serif;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
+
+
+#content h1 {
+  font-size: 2em;
+  margin: 0.5em 0.1em;
+}
+
+#content h2 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+
+#content p {
+  margin: 0;
+}
+
+
 
 app {
   display: flex;
