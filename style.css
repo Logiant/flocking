@@ -4,7 +4,7 @@ body{
   padding-top: 90px;
   padding-bottom: 40px;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  background-color: #d2e6f7;
+  background-color: #d9edff;
   margin: 0 auto;
   text-align: left;
 }
@@ -37,12 +37,13 @@ body{
   text-decoration: none;
   color: white;
   padding: 0 1em;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-variant: small-caps;
-  transition: 1s;
 }
 
 .fixed-header nav a:hover {
   color: blue;
+  transition: 1s;
 }
 
 a {
@@ -56,10 +57,8 @@ a {
   width: 600px;
   margin: 0 auto;
   padding: 0em 1em;
-  background-color: #b8cbdb;
-  font-family: "Marcellus SC", serif;
+  background-color: #d2e6f7;
   color: black;
-  font-family: serif;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -74,6 +73,7 @@ a {
   margin-left: -0.666666667em;
   background-color: #808a72;
   color: white;
+  font-family: "Marcellus SC", serif;
 }
 
 
