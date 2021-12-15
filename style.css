@@ -4,7 +4,7 @@ body{
   padding-top: 90px;
   padding-bottom: 40px;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  background-color: #d9edff;
+  background-color: white;
   margin: 0 auto;
   text-align: left;
 }
@@ -15,11 +15,10 @@ body{
   width: 100%;
   position: fixed;
   z-index: 1000;
-  background-color: #808a72;
+  background-color: #597b94;
   height: 60px;
   line-height: 60px;
   text-align: center;
-  font-family: "Marcellus SC", serif;
   font-size: 2em;
   color: white;
 }
@@ -37,7 +36,6 @@ body{
   text-decoration: none;
   color: white;
   padding: 0 1em;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-variant: small-caps;
 }
 
@@ -57,7 +55,7 @@ a {
   width: 600px;
   margin: 0 auto;
   padding: 0em 1em;
-  background-color: #d2e6f7;
+  background-color: white;
   color: black;
   display: flex;
   justify-content: center;
@@ -69,11 +67,11 @@ a {
   font-size: 1.5em;
   text-align: center;
   width: 100%;
-  padding: inherit;
+  padding: 0.5em 0;
+  font-variant: small-caps;
   margin-left: -0.666666667em;
-  background-color: #808a72;
+  background-color: #597b94;
   color: white;
-  font-family: "Marcellus SC", serif;
 }
 
 
