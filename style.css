@@ -1,8 +1,6 @@
 /* Add some padding on document's body to prevent the content
    from going underneath the header and footer */
 body{
-  padding-top: 90px;
-  padding-bottom: 40px;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   background-color: white;
   margin: 0 auto;
@@ -11,34 +9,35 @@ body{
 
 /* Header Properties */
 .fixed-header{
-  top: 0;
+  top: 00px;
   width: 100%;
   position: fixed;
   z-index: 1000;
-  background-color: #597b94;
-  height: 60px;
-  line-height: 60px;
+  background-image: linear-gradient(#597b94, #597b9499);
+  font-size: 24px;
+  height: 30px;
+  line-height: 30px;
   text-align: center;
-  font-size: 2em;
   color: white;
 }
 
 /*navigation bar*/
 .fixed-header nav {
-  font-size: 20px;
-  line-height: 30px;
-  text-align: center;
-  background-color: inherit;
-  margin: 0 auto;
+  display: flex;
+  opacity: 1;
+  justify-content: flex-end;
+  padding-right: 3em;
+  height: 100%;
 }
-
 .fixed-header nav a {
-  text-decoration: none;
+  filter: drop-shadow(0 0 0.75rem black);
   color: white;
-  padding: 0 1em;
+  opacity: 1;
+  padding: 0 0.5em;
+  margin-top: auto;
+  text-decoration: none;
   font-variant: small-caps;
 }
-
 .fixed-header nav a:hover {
   color: blue;
   transition: 1s;
@@ -50,9 +49,37 @@ a {
 }
 
 
+#frontmatter {
+  text-align: center;
+  background-image: url("images/website_header.png");
+  height: 300px;
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  margin-bottom: 24px;
+}
+
+#frontmatter h1 {
+  font-size: 144px;
+  filter: drop-shadow(0 0 0.5rem black);
+  margin: 0;
+}
+
+.info {
+  margin: 0;
+  font-style: italic;
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+
 #content {
   position: relative;
-  width: 600px;
+  width: 800px;
+  font-size: 18px;
   margin: 0 auto;
   padding: 0em 1em;
   background-color: white;
@@ -84,12 +111,6 @@ a {
   margin: -0.5em 0 0.5em 0;
 }
 
-.info {
-  font-style: italic;
-  font-size: 1.25em;
-  padding: 1em 0;
-  text-align: center;
-}
 
 .slidecontainer {
   display:flex;
@@ -98,6 +119,9 @@ a {
   font-size: 1.25em;
   font-weight: bold;
   margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
 }
 
 
