@@ -44,11 +44,23 @@
       <a href="https://www.red3d.com/cwr/boids/">1987 SIGGRAPH paper</a>.
       These rules are:
     </p>
-      <ul>
-        <li> Collision Avoidance: don't collide with nearby agents
-        <li> Velocity Matching: match the velocity of nearby agents
-        <li> Flock Centering: stay close to nearby agents
-      </ul>
+      <div class="columns">
+        <div class="column">
+          <b>Collision Avoidance</b>
+          <img src="images/avoidance.png" alt="icon from game-icons.net, CC BY 3.0">
+          <p>Don't collide with nearby agents</p>
+        </div>
+        <div class="column">
+          <b>Velocity Matching</b>
+          <img src="images/alignment.png" alt="icon from game-icons.net, CC BY 3.0">
+          <p>Match nearby agents' velocity</p>
+        </div>
+        <div class="column">
+          <b>Flock Centering</b>
+          <img src="images/centering.png" alt="icon from game-icons.net, CC BY 3.0">
+          <p>Stay close to nearby agents</p>
+        </div>
+      </div>
     <p>
       I will refer to algorithms that are based on these
       three rules as <em>Reynolds flocking</em>.

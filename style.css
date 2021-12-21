@@ -107,8 +107,30 @@ a {
   line-height: 1.5;
 }
 
-#content ul {
-  margin: -0.5em 0 0.5em 0;
+.columns {
+  background-color: #597b9499;
+  display: grid;
+  grid-auto-flow: column;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  padding: 1em 0;
+}
+
+#content .column p {
+  margin: 0;
+}
+
+.column img {
+  width: 40%;
+  margin: 0 auto;
+  padding: 10px;
 }
 
 
