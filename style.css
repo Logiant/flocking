@@ -113,6 +113,7 @@ a {
   grid-auto-flow: column;
   text-align: center;
   margin-bottom: 1em;
+  padding: 0 1em;
 }
 
 .column {
@@ -125,6 +126,7 @@ a {
 
 #content .column p {
   margin: 0;
+  font-size: 16px;
 }
 
 .column img {
