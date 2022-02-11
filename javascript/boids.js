@@ -53,11 +53,22 @@ for (var i = 0; i < numBoids; i++) {
 
 
 for (var i = 0; i < numBoids; i++) {
+    //random r and g above 90 (not too black). No b since background is blue
+    var r = 128 + Math.floor(128*Math.random());
+    var g = 128 + Math.floor(128*Math.random());
+    var b = 10;
 
-    boids[i] = PIXI.Sprite.from('images/boid.png');
-    // set anchor point
-    boids[i].anchor.set(0.33, 0.5);
-    // move the sprite to the center of the screen and give it a random orientation
+    var color = (0xFF<<24) + (r<<16) + (g<<8) + (b);
+
+    boids[i] = new PIXI.Graphics();
+    boids[i].beginFill(color, 1);
+    boids[i].lineStyle(0, 0x4A5FB4, 1);
+    boids[i].moveTo(-5, -10);
+    boids[i].lineTo(-5,  10);
+    boids[i].lineTo(15,   0);
+    boids[i].lineTo(-5, -10);
+    boids[i].endFill();
+
     boids[i].x = Math.random()*app.screen.width;
     boids[i].y = Math.random()*app.screen.height;
 
@@ -161,7 +172,6 @@ app.ticker.add((delta) => {
 
       //put the sensing circle on the boids
       sensing[i].position = {x: boids[i].x, y: boids[i].y};
-
 
     }
 
