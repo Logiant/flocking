@@ -62,7 +62,7 @@ for (var i = 0; i < numBoids; i++) {
 
     boids[i] = new PIXI.Graphics();
     boids[i].beginFill(color, 1);
-    boids[i].lineStyle(0, 0x4A5FB4, 1);
+    boids[i].lineStyle(1, 0x000000, 1);
     boids[i].moveTo(-5, -10);
     boids[i].lineTo(-5,  10);
     boids[i].lineTo(15,   0);
