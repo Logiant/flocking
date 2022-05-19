@@ -29,6 +29,10 @@ body{
   padding-right: 3em;
   height: 100%;
 }
+.fixed-header nav p {
+  margin: 0px;
+  margin-right: 10rem;
+}
 .fixed-header nav a {
   filter: drop-shadow(0 0 0.75rem black);
   color: white;
@@ -62,7 +66,7 @@ a {
 }
 
 #frontmatter h1 {
-  font-size: 144px;
+  font-size: 72px;
   filter: drop-shadow(0 0 0.5rem black);
   margin: 0;
 }

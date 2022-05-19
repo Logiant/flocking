@@ -10,123 +10,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="main.css">
 </head>
 
 <body>
 
   <div class="fixed-header">
-          <nav>
-           <a href="https://sites.google.com/udel.edu/lebeaver/">About</a>
-           <a href="https://arxiv.org/abs/2009.14279">Review Paper</a>
-           <a href="https://twitter.com/le_beaver">Twitter</a>
-         </nav>
+    <div></div>
+    <p>Flocking Bots</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="https://sites.google.com/udel.edu/lebeaver/">About</a>
+      <a href="https://twitter.com/le_beaver">Twitter</a>
+    </nav>
   </div>
 
 
 
-  <div id="frontmatter" role="img" aria-label="Photo by Shubham Shrivastava on Unsplash https://unsplash.com/photos/lnzwqJ-cKXY">
-  <h1> Flocking Bots </h1>
-  <p class="info"> This website is a work in progress - last update 2/10/2022 </p>
+  <div id="frontmatter">
+    <video autoplay muted loop>
+        <source src="media/intersection.mp4" type="video/mp4" />
+    </video>
+    <h1>Imagine Beyond What's Possible</h1>
+    <p>A revolutionary approach to rigorous data-driven control</p>
   </div>
+
+
+
 
   <div id="content">
+    <h1>Pushing the boundaries of automation</h1>
+    <p>We are changing the way we imagine multi-agent systems and data-driven control.
+       Applying revolutionary techniques rooted control theory, optimization, and cybernetics, it's possible to automate systems faster and more efficiently than ever before.</p>
 
-
-
-    <p>
-      Flocking is the ubiquitous emergent behavior observed in birds,
-      herd animals, and fish schools.
-      Flocking is a type of <em>emergent behavior</em> that emerges from interactions
-      between individuals.
-      By far the majority of flocking simulations use a set of rules proposed by
-      Craig Reynolds in his
-      <a href="https://www.red3d.com/cwr/boids/">1987 SIGGRAPH paper</a>.
-      These rules are:
-    </p>
-      <div class="columns">
-        <div class="column">
-          <b>Collision Avoidance</b>
-          <img src="images/avoidance.png" alt="icon from game-icons.net, CC BY 3.0">
-          <p>Don't collide with nearby agents</p>
-        </div>
-        <div class="column">
-          <b>Velocity Matching</b>
-          <img src="images/alignment.png" alt="icon from game-icons.net, CC BY 3.0">
-          <p>Match nearby agents' velocity</p>
-        </div>
-        <div class="column">
-          <b>Flock Centering</b>
-          <img src="images/centering.png" alt="icon from game-icons.net, CC BY 3.0">
-          <p>Stay close to nearby agents</p>
-        </div>
+    <div class="cardHolder">
+      <div class="card">
+        <h2>Fast Optimal Control</h2>
+        <p>
+          A novel technique that generate energy-optimal trajectories in real time.
+          This approach outperforms state-of-the-art techniques for obstacle avoidance.
+        </p>
       </div>
-    <p>
-      I will refer to algorithms that are based on these
-      three rules as <em>Reynolds flocking</em>.
-      The agents in these systems are referred to as <em>boids</em> (a
-      contraction of bird-oids).
-    </p>
+      <div class="card">
+        <video autoplay muted loop>
+            <source src="media/diff-drive.mp4" type="video/mp4" />
+        </video>
+      </div>
 
-    <p>
-      What follows is my experience with flocking, and some techniques that might
-      be useful for applications in robotics, computer science, and video games.
-      Mathematically-minded readers may be interseted in the flocking review paper
-      linked in the header.
-    </p>
 
-    <h1>Reynolds Flocking and Potential Fields</h1>
+      <div class="card">
+        <a href="reynolds.html">
+          <video autoplay muted loop>
+              <source src="media/predator.mp4" type="video/mp4" />
+          </video>
+        </a>
+      </div>
+      <div class="card">
+        <h2>Flocking</h2>
+        <p>
+          Nimble formation flight to avoid incursions and maintian communication links with nearby agents.
+        </p>
+      </div>
 
-    <p>
-      A natural way to implement Reynolds Flocking is through artificial
-      potential fields.
-      Potential fields describe many physical forces, and are commonly used to
-      decribe electrical forces and fluid interactions.
-      These potential fields are artificial because they have nothing to do with
-      the physical forces acting on the boids, and are instead used to control their
-      motion.
-      The implementation is straignforward, two of the flocking rules are
-      assigned a virtual force based on the distance to nearby boids:
-    </p>
-    <ul>
-      <li> Push away from nearby boids; pushing force decreases with distance
-      <li> Pull toward distant boids; pulling force decreases with distance
-    </ul>
 
-    <p>
-      The following javascript demo applies potential fields and velocity
-      alignment to a flock of 25 boids.
-      The first slider controls the sensing horizon of each boid-this determines
-      which boids are considered <em>nearby</em>.
-      The second slider weighs the influence of the potential field (collision
-      avoidance and flock centering) against velocity alignment.
-      Moving the second slider to the left prioritizes the potential
-      field, and moving it to the right prioritizes velocity alignment.
-    </p>
+      <div class="card">
+        <h2>Future Mobility Systems</h2>
+        <p>
+          An interpretable solution to forming energy-efficient platoons on a highway.
+        </p>
+      </div>
+      <div class="card">
+        <video autoplay muted loop>
+            <source src="media/intersection.mp4" type="video/mp4" />
+        </video>
+      </div>
 
-    <!-- sliders for boids -->
-    <div class="slidecontainer">
-      Sensing Horizon
-      <input type="range" min="25" max="150" value="50" class="slider" id="horizon">
+
+
+      <div class="card">
+        <video autoplay muted loop>
+            <source src="media/drones.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="card">
+        <h2>Efficient Formation Flight</h2>
+        <p>
+          By designing the rules of interaction, efficient V formations emerge between drones.
+          This leads to energy minimizing formations between agents.
+        </p>
+      </div>
+
+
+
     </div>
-    <div class="slidecontainer">
-      Potential Field vs Alignment
-      <input type="range" min="0" max="100" value="50" class="slider" id="knkv">
-    </div>
-    <app name="boids"> </app>
 
-    <p></p>
-
-    <p>
-      Things left to cover on this page:
-    </p>
-    <ul>
-      <li> Defining the potential field (plot interactable)
-      <li> Velocity alignment (vector math interactable)
-      <li> Obstalce and predator avoidance -- steer to avoid vs virtual agents
-      <li> Final demonstration
-      <li> Motivate existing resarch, link to main page
-    </ul>
 
 
 
@@ -134,8 +111,5 @@
   </div>
 
 </body>
-
-<script src="javascript/pixi.min.js"></script>
-<script src="javascript/boids.js"></script>
 
 </html>
